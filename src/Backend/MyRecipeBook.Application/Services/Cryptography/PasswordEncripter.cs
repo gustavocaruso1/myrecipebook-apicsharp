@@ -24,7 +24,7 @@ namespace MyRecipeBook.Application.Services.Cryptography
             var sb = new StringBuilder();
             foreach (byte b in bytes) 
             {
-                var hex = b.ToString("2x");
+                var hex = b.ToString("x2");
                 sb.Append(hex);
                 
             }

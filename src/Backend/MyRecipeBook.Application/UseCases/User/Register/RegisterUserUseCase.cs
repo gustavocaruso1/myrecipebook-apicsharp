@@ -3,6 +3,7 @@ using MyRecipeBook.Application.Services.AutoMapper;
 using MyRecipeBook.Application.Services.Cryptography;
 using MyRecipeBook.Communication.Requests;
 using MyRecipeBook.Communication.Responses;
+using MyRecipeBook.Domain.Repositores;
 using MyRecipeBook.Domain.Repositores.User;
 using MyRecipeBook.Exceptions.ExceptionsBase;
 using System;
@@ -10,6 +11,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
+
 
 namespace MyRecipeBook.Application.UseCases.User.Register
 {
@@ -17,24 +20,27 @@ namespace MyRecipeBook.Application.UseCases.User.Register
     {
         private readonly IUserWriteOnlyRepository _writeOnlyRepository;
         private readonly IUserReadOnlyRepository _readOnlyRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly PasswordEncripter _passwordEncripter;
 
-        public RegisterUserUseCase(IUserWriteOnlyRepository writeOnlyRepository, IUserReadOnlyRepository readOnlyRepository, PasswordEncripter passwordEncripter, IMapper mapper)
+        public RegisterUserUseCase(IUserWriteOnlyRepository writeOnlyRepository, IUserReadOnlyRepository readOnlyRepository, IUnitOfWork unitOfWork, 
+            PasswordEncripter passwordEncripter, IMapper mapper)
         {
             _writeOnlyRepository = writeOnlyRepository;
-            _readOnlyRepository = readOnlyRepository;
+            _readOnlyRepository = readOnlyRepository;   
             _mapper = mapper;   
-            _passwordEncripter = passwordEncripter; 
+            _passwordEncripter = passwordEncripter;
+            _unitOfWork = unitOfWork;
         }
 
-        public async Task<ResponseRegisteredUserJson>  Execute(RequestRegisterUserJson request)
+        public async Task<ResponseRegisteredUserJson> Execute(RequestRegisterUserJson request)
         {
             //var criptografiaDeSenha = new PasswordEncripter();
 
             /**/
 
-            Validate (request);
+            Validate(request);
 
 
             var user = _mapper.Map<Domain.Entities.User>(request);
@@ -50,12 +56,14 @@ namespace MyRecipeBook.Application.UseCases.User.Register
             //salvar no banco de dados
 
             await _writeOnlyRepository.Add(user);
+            await _unitOfWork.Commit();
 
             return new ResponseRegisteredUserJson
             {
                 Name = request.Name
             };
         }
+
         private void Validate(RequestRegisterUserJson request)
         {
             var validator = new RegisterUserValidator();
