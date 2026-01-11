@@ -19,7 +19,7 @@ namespace MyRecipeBook.Infrastructure
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             var databaseType = configuration.GetConnectionString("DatabaseType");
-            var databaseTypeEnum = (DatabaseType)Enum.Parse(typeof(DatabaseType), databaseType);
+            var databaseTypeEnum = (DatabaseType)Enum.Parse(typeof(DatabaseType), databaseType!);
             if(databaseTypeEnum == DatabaseType.MySql)
             {
                 AddDbContext_MySqlServer(services, configuration);
