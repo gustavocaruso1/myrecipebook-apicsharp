@@ -24,11 +24,7 @@ namespace MyRecipeBook.Infrastructure
             {
                 AddDbContext_MySqlServer(services, configuration);
             }
-            else
-            {
-
-            }
-            AddDbContext_MySqlServer(services, configuration);
+            
             AddRepositores(services);
         }
         private static void AddDbContext_MySqlServer(IServiceCollection services, IConfiguration configuration)

@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using MyRecipeBook.Exceptions;
 
 
 namespace MyRecipeBook.Application.UseCases.User.Register
@@ -40,7 +41,7 @@ namespace MyRecipeBook.Application.UseCases.User.Register
 
             /**/
 
-            Validate(request);
+            await Validate(request);
 
 
             var user = _mapper.Map<Domain.Entities.User>(request);
@@ -64,10 +65,14 @@ namespace MyRecipeBook.Application.UseCases.User.Register
             };
         }
 
-        private void Validate(RequestRegisterUserJson request)
+        private async Task Validate(RequestRegisterUserJson request)
         {
             var validator = new RegisterUserValidator();
             var result = validator.Validate(request);
+            var emailExist = await _readOnlyRepository.ExistActiveUserWithEmail(request.Email);
+            if (emailExist)
+                result.Errors.Add(new FluentValidation.Results.ValidationFailure(string.Empty, ResourceMessagesException.EMAIL_ALREADY_REGISTERED));
+          
 
             if (result.IsValid == false)
             {
