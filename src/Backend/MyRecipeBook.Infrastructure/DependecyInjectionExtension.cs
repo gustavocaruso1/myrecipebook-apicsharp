@@ -6,6 +6,7 @@ using MyRecipeBook.Domain.Repositores;
 using MyRecipeBook.Domain.Repositores.User;
 using MyRecipeBook.Infrastructure.DataAccess;
 using MyRecipeBook.Infrastructure.DataAccess.Repositores;
+using MyRecipeBook.Infrastructure.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,10 @@ namespace MyRecipeBook.Infrastructure
     {
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            var databaseType = configuration.GetConnectionString("DatabaseType");
-            var databaseTypeEnum = (DatabaseType)Enum.Parse(typeof(DatabaseType), databaseType!);
-            if(databaseTypeEnum == DatabaseType.MySql)
+            var databaseType = configuration.DatabaseType();
+
+
+            if (databaseType == DatabaseType.MySql)
             {
                 AddDbContext_MySqlServer(services, configuration);
             }
@@ -29,7 +31,7 @@ namespace MyRecipeBook.Infrastructure
         }
         private static void AddDbContext_MySqlServer(IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("ConnectionMySqlServer");
+            var connectionString = configuration.ConnectionString();
 
 
             var serverVersion = new MySqlServerVersion(new Version(8, 0, 44));
