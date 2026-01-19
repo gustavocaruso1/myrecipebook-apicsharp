@@ -22,7 +22,10 @@ namespace MyRecipeBook.Infrastructure.Extensions
         {
             var databaseType = configuration.DatabaseType();
 
-            return configuration.GetConnectionString("ConnectionMySqlServer")!;
+            if (databaseType == Domain.Enums.DatabaseType.MySql)
+                return configuration.GetConnectionString("ConnectionMySqlServer")!;
+            else
+                return configuration.GetConnectionString("ConnectionSqlServer")!;
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36511.14
+# Visual Studio Version 18
+VisualStudioVersion = 18.1.11312.151 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
@@ -22,6 +22,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRecipeBook.Communication", "src\Shared\MyRecipeBook.Communication\MyRecipeBook.Communication.csproj", "{2AEE5053-D36D-4B57-93D9-F2C8FF402C0B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRecipeBook.Exceptions", "src\Shared\MyRecipeBook.Exceptions\MyRecipeBook.Exceptions.csproj", "{74195DAA-D370-4780-A982-C8CEC0D9ABCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validators.Test", "tests\Validators.Test\Validators.Test.csproj", "{8FB0C8F9-1BAC-4513-AA7C-48F6C1258046}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonTestUtilities", "tests\CommonTestUtilities\CommonTestUtilities.csproj", "{9C0AF384-B9D3-465D-95FD-F703412F8368}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +57,14 @@ Global
 		{74195DAA-D370-4780-A982-C8CEC0D9ABCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74195DAA-D370-4780-A982-C8CEC0D9ABCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74195DAA-D370-4780-A982-C8CEC0D9ABCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FB0C8F9-1BAC-4513-AA7C-48F6C1258046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FB0C8F9-1BAC-4513-AA7C-48F6C1258046}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FB0C8F9-1BAC-4513-AA7C-48F6C1258046}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FB0C8F9-1BAC-4513-AA7C-48F6C1258046}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C0AF384-B9D3-465D-95FD-F703412F8368}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C0AF384-B9D3-465D-95FD-F703412F8368}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C0AF384-B9D3-465D-95FD-F703412F8368}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C0AF384-B9D3-465D-95FD-F703412F8368}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +78,8 @@ Global
 		{A436B8A5-4DF3-435A-8BC2-CA9CE93AF589} = {ED5ED6AE-7EE0-4652-9AB0-BCFBB746C65E}
 		{2AEE5053-D36D-4B57-93D9-F2C8FF402C0B} = {2CF43482-401D-47D9-B379-98BD09EB91E6}
 		{74195DAA-D370-4780-A982-C8CEC0D9ABCC} = {2CF43482-401D-47D9-B379-98BD09EB91E6}
+		{8FB0C8F9-1BAC-4513-AA7C-48F6C1258046} = {7E847191-C859-4CE4-98E4-43494C37D8B5}
+		{9C0AF384-B9D3-465D-95FD-F703412F8368} = {7E847191-C859-4CE4-98E4-43494C37D8B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {891D1561-9111-4DB0-B49F-2395C63D001C}
