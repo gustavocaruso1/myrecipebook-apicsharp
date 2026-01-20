@@ -120,8 +120,17 @@
   <data name="EMAIL_ALREADY_REGISTERED" xml:space="preserve">
     <value>Email já registrado.</value>
   </data>
+  <data name="EMAIL_EMPTY" xml:space="preserve">
+    <value>O email não pode estar vazio.</value>
+  </data>
+  <data name="EMAIL_INVALID" xml:space="preserve">
+    <value>O email não é valido</value>
+  </data>
   <data name="NAME_EMPTY" xml:space="preserve">
     <value>O nome não pode estar vazio.</value>
+  </data>
+  <data name="PASSWORD_INVALID" xml:space="preserve">
+    <value>A senha não é valida</value>
   </data>
   <data name="UNKNOWN_ERROR" xml:space="preserve">
     <value>Erro desconhecido.</value>
