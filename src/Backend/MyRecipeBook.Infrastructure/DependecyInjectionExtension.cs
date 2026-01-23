@@ -21,6 +21,13 @@ namespace MyRecipeBook.Infrastructure
     {
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
+            AddRepositores(services);
+
+            if (configuration.IsUnitTestEnviroment())
+                return;
+
+
+
             var databaseType = configuration.DatabaseType();
 
 
@@ -35,7 +42,7 @@ namespace MyRecipeBook.Infrastructure
                 AddFluentMigrator_SqlServer(services, configuration);
             }
 
-                AddRepositores(services);
+                
         }
         private static void AddDbContext_MySqlServer(IServiceCollection services, IConfiguration configuration)
         {
